@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace Job_Search_Assistant
 {
-    class ApplicationModel
+    public class ApplicationModel
     {
+        /// <summary>
+        /// Represents this applications unique identifier to be used for database communication
+        /// </summary>
+        public int Id { get; set; }
+
         /// <summary>
         /// Represents the name of the company that this application applies to
         /// </summary>

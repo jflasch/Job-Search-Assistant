@@ -26,5 +26,11 @@ namespace Job_Search_Assistant
         {
 
         }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 }

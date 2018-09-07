@@ -16,6 +16,10 @@ namespace Job_Search_Assistant
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            // Initialize the database connections
+            GlobalConfig.InitializeConnections(true, true);
+
             Application.Run(new ApplicationsListForm());
         }
     }

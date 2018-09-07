@@ -60,6 +60,7 @@
             this.addNewButton.TabIndex = 9;
             this.addNewButton.Text = "Add New";
             this.addNewButton.UseVisualStyleBackColor = true;
+            this.addNewButton.Click += new System.EventHandler(this.addNewButton_Click);
             // 
             // ApplicationsListForm
             // 

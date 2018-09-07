@@ -16,5 +16,12 @@ namespace Job_Search_Assistant
         {
             InitializeComponent();
         }
+
+        private void addNewButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }
