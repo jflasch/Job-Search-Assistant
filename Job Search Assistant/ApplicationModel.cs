@@ -47,5 +47,20 @@ namespace Job_Search_Assistant
         /// Represents the notes for this application (interviews pending, etc...)
         /// </summary>
         public string notes { get; set; }
+
+        public ApplicationModel(string companyName, string jobLocation, string jobTitle, DateTime dateApplied, bool status)
+        {
+            this.companyName = companyName;
+            this.jobLocation = jobLocation;
+            this.jobTitle = jobTitle;
+            this.dateApplied = dateApplied;
+            this.status = status;
+        }
+
+        public ApplicationModel()
+        {
+
+        }
+        
     }
 }

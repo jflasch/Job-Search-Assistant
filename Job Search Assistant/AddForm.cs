@@ -29,8 +29,33 @@ namespace Job_Search_Assistant
 
         private void addButton_Click(object sender, EventArgs e)
         {
-
+            if (ValidateForm())
+            {
+                ApplicationModel jobApplication = new ApplicationModel(
+                    companyNameText.Text, 
+                    jobLocationText.Text, 
+                    jobTitleText.Text, 
+                    DateTime.Now, 
+                    true);
+                if (urlLabel.Text != "")
+                {
+                    jobApplication.appPageURL = urlText.Text;
+                }
+            }
         }
         
+        private bool ValidateForm()
+        {
+            if (companyNameText.Text == "" || jobLocationText.Text == "" || jobTitleText.Text == "")
+            {
+                errorLabel.Visible = true;
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
     }
 }
