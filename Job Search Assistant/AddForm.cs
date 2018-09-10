@@ -40,7 +40,8 @@ namespace Job_Search_Assistant
                 if (urlLabel.Text != "")
                 {
                     jobApplication.appPageURL = urlText.Text;
-                }
+                }                
+                GlobalConfig.Connection.CreateJobApplication(jobApplication);
             }
         }
         

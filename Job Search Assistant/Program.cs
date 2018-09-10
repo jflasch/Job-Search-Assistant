@@ -18,7 +18,7 @@ namespace Job_Search_Assistant
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Initialize the database connections
-            GlobalConfig.InitializeConnections(true, true);
+            GlobalConfig.InitializeConnections(DatabaseType.Sql);
 
             Application.Run(new AddForm());
             // Application.Run(new ApplicationsListForm());
