@@ -141,11 +141,11 @@
             this.errorLabel.AutoSize = true;
             this.errorLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorLabel.ForeColor = System.Drawing.Color.Red;
-            this.errorLabel.Location = new System.Drawing.Point(155, 340);
+            this.errorLabel.Location = new System.Drawing.Point(158, 297);
             this.errorLabel.Name = "errorLabel";
-            this.errorLabel.Size = new System.Drawing.Size(202, 17);
+            this.errorLabel.Size = new System.Drawing.Size(197, 17);
             this.errorLabel.TabIndex = 11;
-            this.errorLabel.Text = "Please fill in the required fields";
+            this.errorLabel.Text = "Please fill in all required fields";
             this.errorLabel.Visible = false;
             // 
             // dateAppliedLabel
@@ -174,7 +174,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(496, 366);
+            this.ClientSize = new System.Drawing.Size(496, 323);
             this.Controls.Add(this.applyDateDateTimePicker);
             this.Controls.Add(this.dateAppliedLabel);
             this.Controls.Add(this.errorLabel);

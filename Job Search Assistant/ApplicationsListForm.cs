@@ -17,7 +17,6 @@ namespace Job_Search_Assistant
         public ApplicationsListForm()
         {
             InitializeComponent();
-            //CreateSampleData();
             LoadListData();
             PopulateFlowLayout();
         }
@@ -27,30 +26,25 @@ namespace Job_Search_Assistant
             applicationModels = GlobalConfig.Connection.GetApplicationModels_All();
         }
 
-        private void CreateSampleData()
-        {
-            applicationModels.Add(new ApplicationModel { companyName = "Company 1", jobLocation = "Chicago, IL", jobTitle = "Engineer", Id = 1 });
-            applicationModels.Add(new ApplicationModel { companyName = "Company 2", jobLocation = "Madison, WI", jobTitle = "Developer", Id = 2 });
-
-        }
-
         private void PopulateFlowLayout()
         {
+            applicationModels.Sort((x, y) => y.dateApplied.CompareTo(x.dateApplied));
             foreach (ApplicationModel model in applicationModels)
             {
                 ApplicationListControl aLC = new ApplicationListControl();
                 aLC.Tag = model.Id;
                 aLC.upperTextLabel.Text = $"{ model.companyName } | { model.jobLocation }";
-                aLC.middleTextLabel.Text = $"{ model.jobTitle } | Applied on { model.dateApplied.ToShortDateString() }";
+                aLC.jobTitleLabel.Text = model.jobTitle;
+                aLC.dateAppliedLabel.Text = $"Applied on { model.dateApplied.ToShortDateString() }";
                 if (model.status)
                 {
-                    aLC.label1.Text = "Open";
-                    aLC.label1.ForeColor = Color.Green;
+                    aLC.statusLabel.Text = "Open";
+                    aLC.statusLabel.ForeColor = Color.Green;
                 }
                 else
                 {
-                    aLC.label1.Text = "Closed";
-                    aLC.label1.ForeColor = Color.Red;
+                    aLC.statusLabel.Text = "Closed";
+                    aLC.statusLabel.ForeColor = Color.Red;
                 }
                 if (model.notes == "" || model.notes == null)
                 {
@@ -61,22 +55,10 @@ namespace Job_Search_Assistant
             }
         }
 
-        private void ClearFlowLayout()
-        {
-            //List<Control> listControls = applicationsListFlowLayout.Controls.ToList();
-
-            foreach (Control control in applicationsListFlowLayout.Controls)
-            {
-                applicationsListFlowLayout.Controls.Remove(control);
-                control.Dispose();
-            }
-        }
-
         private void addNewButton_Click(object sender, EventArgs e)
         {
             AddForm addForm = new AddForm();
             addForm.ShowDialog();
-            //ClearFlowLayout();
             LoadListData();
             applicationsListFlowLayout.Controls.Clear();
             PopulateFlowLayout();

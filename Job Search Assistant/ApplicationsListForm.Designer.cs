@@ -43,17 +43,17 @@
             // headerLabel
             // 
             this.headerLabel.AutoSize = true;
-            this.headerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.headerLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.headerLabel.Location = new System.Drawing.Point(585, 25);
             this.headerLabel.Name = "headerLabel";
-            this.headerLabel.Size = new System.Drawing.Size(262, 31);
+            this.headerLabel.Size = new System.Drawing.Size(260, 37);
             this.headerLabel.TabIndex = 8;
             this.headerLabel.Text = "Job Applications List";
             this.headerLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // addNewButton
             // 
-            this.addNewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.addNewButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addNewButton.Location = new System.Drawing.Point(1302, 12);
             this.addNewButton.Name = "addNewButton";
             this.addNewButton.Size = new System.Drawing.Size(142, 66);
