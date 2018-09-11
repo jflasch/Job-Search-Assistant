@@ -95,7 +95,7 @@
             this.jobTitleText.Location = new System.Drawing.Point(190, 120);
             this.jobTitleText.Name = "jobTitleText";
             this.jobTitleText.Size = new System.Drawing.Size(255, 29);
-            this.jobTitleText.TabIndex = 4;
+            this.jobTitleText.TabIndex = 1;
             // 
             // addButton
             // 
@@ -103,7 +103,7 @@
             this.addButton.Location = new System.Drawing.Point(370, 252);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 29);
-            this.addButton.TabIndex = 6;
+            this.addButton.TabIndex = 5;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
@@ -134,7 +134,7 @@
             this.urlText.Location = new System.Drawing.Point(190, 219);
             this.urlText.Name = "urlText";
             this.urlText.Size = new System.Drawing.Size(255, 29);
-            this.urlText.TabIndex = 9;
+            this.urlText.TabIndex = 4;
             // 
             // errorLabel
             // 
@@ -166,7 +166,7 @@
             this.applyDateDateTimePicker.MinDate = new System.DateTime(1980, 1, 1, 0, 0, 0, 0);
             this.applyDateDateTimePicker.Name = "applyDateDateTimePicker";
             this.applyDateDateTimePicker.Size = new System.Drawing.Size(255, 29);
-            this.applyDateDateTimePicker.TabIndex = 13;
+            this.applyDateDateTimePicker.TabIndex = 3;
             this.applyDateDateTimePicker.Value = new System.DateTime(2018, 9, 11, 15, 11, 58, 0);
             // 
             // AddForm

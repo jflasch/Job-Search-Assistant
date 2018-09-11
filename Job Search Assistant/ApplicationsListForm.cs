@@ -13,6 +13,7 @@ namespace Job_Search_Assistant
     public partial class ApplicationsListForm : Form
     {
         private List<ApplicationModel> applicationModels = new List<ApplicationModel>();
+        private string sortType = "Apply Date (Default)";
 
         public ApplicationsListForm()
         {
@@ -28,7 +29,9 @@ namespace Job_Search_Assistant
 
         private void PopulateFlowLayout()
         {
-            applicationModels.Sort((x, y) => y.dateApplied.CompareTo(x.dateApplied));
+            applicationsListFlowLayout.Controls.Clear();
+            sortBy(sortType);
+
             foreach (ApplicationModel model in applicationModels)
             {
                 ApplicationListControl aLC = new ApplicationListControl();
@@ -60,7 +63,31 @@ namespace Job_Search_Assistant
             AddForm addForm = new AddForm();
             addForm.ShowDialog();
             LoadListData();
-            applicationsListFlowLayout.Controls.Clear();
+            PopulateFlowLayout();
+        }
+
+        private void sortBy(string sortType)
+        {
+            if (sortType == "Apply Date (Default)")
+            {
+                // Sort the list of applications by dateApplied in descending order (most recent appears first)
+                applicationModels.Sort((x, y) => y.dateApplied.CompareTo(x.dateApplied));
+            } else if (sortType == "Location")
+            {
+                // TODO - Sort by location
+                applicationModels.Sort((x, y) => x.jobLocation.CompareTo(y.jobLocation));
+            }
+            else if (sortType == "Status")
+            {
+                // TODO - Sort by Status
+                applicationModels.Sort((x, y) => y.dateApplied.CompareTo(x.dateApplied));
+                applicationModels.Sort((x, y) => x.status.CompareTo(y.status));
+            }
+        }
+
+        private void sortingDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            sortType = sortingDropDown.Text;
             PopulateFlowLayout();
         }
     }
