@@ -28,125 +28,119 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.companyNameLabel = new System.Windows.Forms.Label();
-            this.jobTitleLabel = new System.Windows.Forms.Label();
-            this.jobLocationLabel = new System.Windows.Forms.Label();
-            this.dateAppliedLabel = new System.Windows.Forms.Label();
+            this.upperTextLabel = new System.Windows.Forms.Label();
+            this.middleTextLabel = new System.Windows.Forms.Label();
             this.notesLabel = new System.Windows.Forms.Label();
             this.urlLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.statusLabel = new System.Windows.Forms.Label();
             this.addNoteButton = new System.Windows.Forms.Button();
+            this.urlHiddenLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // companyNameLabel
+            // upperTextLabel
             // 
-            this.companyNameLabel.AutoSize = true;
-            this.companyNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.companyNameLabel.Location = new System.Drawing.Point(3, 0);
-            this.companyNameLabel.Name = "companyNameLabel";
-            this.companyNameLabel.Size = new System.Drawing.Size(179, 20);
-            this.companyNameLabel.TabIndex = 2;
-            this.companyNameLabel.Text = "<company name           >";
+            this.upperTextLabel.AutoSize = true;
+            this.upperTextLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.upperTextLabel.Location = new System.Drawing.Point(3, -2);
+            this.upperTextLabel.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.upperTextLabel.Name = "upperTextLabel";
+            this.upperTextLabel.Size = new System.Drawing.Size(254, 21);
+            this.upperTextLabel.TabIndex = 2;
+            this.upperTextLabel.Text = "<company name> | <job location>";
             // 
-            // jobTitleLabel
+            // middleTextLabel
             // 
-            this.jobTitleLabel.AutoSize = true;
-            this.jobTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.jobTitleLabel.Location = new System.Drawing.Point(3, 20);
-            this.jobTitleLabel.Name = "jobTitleLabel";
-            this.jobTitleLabel.Size = new System.Drawing.Size(233, 20);
-            this.jobTitleLabel.TabIndex = 3;
-            this.jobTitleLabel.Text = "<job title                                       >";
-            // 
-            // jobLocationLabel
-            // 
-            this.jobLocationLabel.AutoSize = true;
-            this.jobLocationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.jobLocationLabel.Location = new System.Drawing.Point(188, 0);
-            this.jobLocationLabel.Name = "jobLocationLabel";
-            this.jobLocationLabel.Size = new System.Drawing.Size(107, 20);
-            this.jobLocationLabel.TabIndex = 4;
-            this.jobLocationLabel.Text = "<job location>";
-            // 
-            // dateAppliedLabel
-            // 
-            this.dateAppliedLabel.AutoSize = true;
-            this.dateAppliedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.dateAppliedLabel.Location = new System.Drawing.Point(301, 0);
-            this.dateAppliedLabel.Name = "dateAppliedLabel";
-            this.dateAppliedLabel.Size = new System.Drawing.Size(114, 20);
-            this.dateAppliedLabel.TabIndex = 6;
-            this.dateAppliedLabel.Text = "<date applied>";
+            this.middleTextLabel.AutoSize = true;
+            this.middleTextLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.middleTextLabel.Location = new System.Drawing.Point(3, 20);
+            this.middleTextLabel.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.middleTextLabel.Name = "middleTextLabel";
+            this.middleTextLabel.Size = new System.Drawing.Size(203, 21);
+            this.middleTextLabel.TabIndex = 3;
+            this.middleTextLabel.Text = "<job title> | <date applied>";
+            this.middleTextLabel.Click += new System.EventHandler(this.middleTextLabel_Click);
             // 
             // notesLabel
             // 
             this.notesLabel.AutoSize = true;
-            this.notesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.notesLabel.Location = new System.Drawing.Point(3, 60);
+            this.notesLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.notesLabel.Location = new System.Drawing.Point(3, 66);
+            this.notesLabel.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.notesLabel.Name = "notesLabel";
-            this.notesLabel.Size = new System.Drawing.Size(67, 20);
+            this.notesLabel.Size = new System.Drawing.Size(70, 21);
             this.notesLabel.TabIndex = 7;
             this.notesLabel.Text = "<notes>";
             // 
             // urlLinkLabel
             // 
             this.urlLinkLabel.AutoSize = true;
-            this.urlLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.urlLinkLabel.Location = new System.Drawing.Point(10, 40);
+            this.urlLinkLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.urlLinkLabel.Location = new System.Drawing.Point(3, 43);
+            this.urlLinkLabel.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.urlLinkLabel.Name = "urlLinkLabel";
-            this.urlLinkLabel.Size = new System.Drawing.Size(172, 20);
+            this.urlLinkLabel.Size = new System.Drawing.Size(167, 21);
             this.urlLinkLabel.TabIndex = 8;
             this.urlLinkLabel.TabStop = true;
             this.urlLinkLabel.Text = "Go to Application Page";
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.statusLabel.Location = new System.Drawing.Point(242, 20);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(71, 20);
-            this.statusLabel.TabIndex = 5;
-            this.statusLabel.Text = "<status>";
+            this.urlLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.urlLinkLabel_LinkClicked);
             // 
             // addNoteButton
             // 
-            this.addNoteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.addNoteButton.Location = new System.Drawing.Point(319, 36);
+            this.addNoteButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addNoteButton.Location = new System.Drawing.Point(392, 3);
             this.addNoteButton.Name = "addNoteButton";
             this.addNoteButton.Size = new System.Drawing.Size(85, 28);
             this.addNoteButton.TabIndex = 9;
             this.addNoteButton.Text = "Add Note";
             this.addNoteButton.UseVisualStyleBackColor = true;
+            this.addNoteButton.Click += new System.EventHandler(this.addNoteButton_Click);
+            // 
+            // urlHiddenLabel
+            // 
+            this.urlHiddenLabel.AutoSize = true;
+            this.urlHiddenLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.urlHiddenLabel.Location = new System.Drawing.Point(161, 20);
+            this.urlHiddenLabel.Name = "urlHiddenLabel";
+            this.urlHiddenLabel.Size = new System.Drawing.Size(0, 21);
+            this.urlHiddenLabel.TabIndex = 10;
+            this.urlHiddenLabel.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(404, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 21);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "<status>";
             // 
             // ApplicationListControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.urlHiddenLabel);
             this.Controls.Add(this.addNoteButton);
             this.Controls.Add(this.urlLinkLabel);
             this.Controls.Add(this.notesLabel);
-            this.Controls.Add(this.dateAppliedLabel);
-            this.Controls.Add(this.statusLabel);
-            this.Controls.Add(this.jobLocationLabel);
-            this.Controls.Add(this.jobTitleLabel);
-            this.Controls.Add(this.companyNameLabel);
+            this.Controls.Add(this.middleTextLabel);
+            this.Controls.Add(this.upperTextLabel);
             this.Name = "ApplicationListControl";
-            this.Size = new System.Drawing.Size(486, 85);
+            this.Size = new System.Drawing.Size(480, 93);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label companyNameLabel;
-        private System.Windows.Forms.Label jobTitleLabel;
-        private System.Windows.Forms.Label jobLocationLabel;
-        private System.Windows.Forms.Label dateAppliedLabel;
-        private System.Windows.Forms.Label notesLabel;
-        private System.Windows.Forms.LinkLabel urlLinkLabel;
-        private System.Windows.Forms.Label statusLabel;
-        private System.Windows.Forms.Button addNoteButton;
+        public System.Windows.Forms.Label upperTextLabel;
+        public System.Windows.Forms.Label middleTextLabel;
+        public System.Windows.Forms.Label notesLabel;
+        public System.Windows.Forms.LinkLabel urlLinkLabel;
+        public System.Windows.Forms.Button addNoteButton;
+        public System.Windows.Forms.Label urlHiddenLabel;
+        public System.Windows.Forms.Label label1;
     }
 }

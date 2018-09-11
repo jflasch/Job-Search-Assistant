@@ -76,7 +76,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLConnector.cs" />
     <Compile Include="TextConnector.cs" />
-    <Compile Include="TextConnectorAccessor.cs" />
+    <Compile Include="TextConnectorProcessor.cs" />
     <EmbeddedResource Include="AddForm.resx">
       <DependentUpon>AddForm.cs</DependentUpon>
     </EmbeddedResource>

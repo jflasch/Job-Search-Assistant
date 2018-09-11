@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Web;
 
 namespace Job_Search_Assistant
 {
@@ -17,16 +18,6 @@ namespace Job_Search_Assistant
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void addButton_Click(object sender, EventArgs e)
         {
             if (ValidateForm())
@@ -35,13 +26,14 @@ namespace Job_Search_Assistant
                     companyNameText.Text, 
                     jobLocationText.Text, 
                     jobTitleText.Text, 
-                    DateTime.Now, 
+                    applyDateDateTimePicker.Value, 
                     true);
                 if (urlLabel.Text != "")
                 {
                     jobApplication.appPageURL = urlText.Text;
                 }                
                 GlobalConfig.Connection.CreateJobApplication(jobApplication);
+                this.Close();
             }
         }
         

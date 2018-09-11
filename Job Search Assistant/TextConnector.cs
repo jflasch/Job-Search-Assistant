@@ -26,5 +26,10 @@ namespace Job_Search_Assistant
 
             return model;
         }
+
+        public List<ApplicationModel> GetApplicationModels_All()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

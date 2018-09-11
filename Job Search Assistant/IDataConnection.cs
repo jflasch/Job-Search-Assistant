@@ -9,5 +9,7 @@ namespace Job_Search_Assistant
     public interface IDataConnection
     {
         ApplicationModel CreateJobApplication(ApplicationModel model);
+
+        List<ApplicationModel> GetApplicationModels_All();
     }
 }

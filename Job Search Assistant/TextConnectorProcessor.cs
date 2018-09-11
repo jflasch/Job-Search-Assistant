@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Job_Search_Assistant
 {
-    public static class TextConnectorAccessor
+    public static class TextConnectorProcessor
     {
         public static string FullFilePath(this string fileName)
         {
@@ -36,7 +36,7 @@ namespace Job_Search_Assistant
                 ApplicationModel app = new ApplicationModel();
                 app.Id = int.Parse(cols[0]);
 
-                // TODO: Fix the issue where Locations separated by commas are split up incorrectly
+                // TODO - Fix the issue where Locations separated by commas are split up incorrectly
                 app.jobLocation = cols[1];
                 app.jobTitle = cols[2];
                 app.companyName = cols[3];

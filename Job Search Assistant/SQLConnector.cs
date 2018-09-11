@@ -24,14 +24,27 @@ namespace Job_Search_Assistant
                 p.Add("@JobTitle", model.jobTitle);
                 p.Add("@JobLocation", model.jobLocation);
                 p.Add("@URL", model.appPageURL);
+                p.Add("@DateApplied", model.dateApplied);
                 p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                connection.Execute("dbo.spJobApplication_Insert", p, commandType: CommandType.StoredProcedure);
+                connection.Execute("dbo.spJobApplications_Insert", p, commandType: CommandType.StoredProcedure);
 
                 model.Id = p.Get<int>("@id");
 
                 return model;
             }
+        }
+
+        public List<ApplicationModel> GetApplicationModels_All()
+        {
+            List<ApplicationModel> output;
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConnectionString("JobApplications")))
+            {
+                output = connection.Query<ApplicationModel>("dbo.spJobApplications_GetAll").ToList();
+            }
+
+            return output;
         }
     }
 }

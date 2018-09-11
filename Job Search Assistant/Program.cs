@@ -20,8 +20,8 @@ namespace Job_Search_Assistant
             // Initialize the database connections
             GlobalConfig.InitializeConnections(DatabaseType.Sql);
 
-            Application.Run(new AddForm());
-            // Application.Run(new ApplicationsListForm());
+            //Application.Run(new AddForm());
+            Application.Run(new ApplicationsListForm());
         }
     }
 }
