@@ -18,7 +18,6 @@ namespace Job_Search_Assistant
         public ApplicationsListForm()
         {
             InitializeComponent();
-            LoadListData();
             PopulateFlowLayout();
         }
 
@@ -30,6 +29,7 @@ namespace Job_Search_Assistant
         private void PopulateFlowLayout()
         {
             applicationsListFlowLayout.Controls.Clear();
+            LoadListData();
             sortBy(sortType);
 
             foreach (ApplicationModel model in applicationModels)
@@ -43,11 +43,13 @@ namespace Job_Search_Assistant
                 {
                     aLC.statusLabel.Text = "Open";
                     aLC.statusLabel.ForeColor = Color.Green;
+                    aLC.BackColor = Color.White;
                 }
                 else
                 {
                     aLC.statusLabel.Text = "Closed";
                     aLC.statusLabel.ForeColor = Color.Red;
+                    aLC.BackColor = Color.LightSalmon;
                 }
                 if (model.notes == "" || model.notes == null)
                 {
@@ -62,7 +64,6 @@ namespace Job_Search_Assistant
         {
             AddForm addForm = new AddForm();
             addForm.ShowDialog();
-            LoadListData();
             PopulateFlowLayout();
         }
 
@@ -74,14 +75,14 @@ namespace Job_Search_Assistant
                 applicationModels.Sort((x, y) => y.dateApplied.CompareTo(x.dateApplied));
             } else if (sortType == "Location")
             {
-                // TODO - Sort by location
+                // Sort the list of applications by location (city name)
                 applicationModels.Sort((x, y) => x.jobLocation.CompareTo(y.jobLocation));
             }
             else if (sortType == "Status")
             {
-                // TODO - Sort by Status
+                // Sort the list of applications by status (open first, closed at the bottom)
                 applicationModels.Sort((x, y) => y.dateApplied.CompareTo(x.dateApplied));
-                applicationModels.Sort((x, y) => x.status.CompareTo(y.status));
+                applicationModels.Sort((x, y) => y.status.CompareTo(x.status));
             }
         }
 

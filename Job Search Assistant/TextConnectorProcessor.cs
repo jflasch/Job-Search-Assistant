@@ -35,8 +35,7 @@ namespace Job_Search_Assistant
 
                 ApplicationModel app = new ApplicationModel();
                 app.Id = int.Parse(cols[0]);
-
-                // TODO - Fix the issue where Locations separated by commas are split up incorrectly
+                
                 app.jobLocation = cols[1];
                 app.jobTitle = cols[2];
                 app.companyName = cols[3];

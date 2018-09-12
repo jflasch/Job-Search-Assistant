@@ -61,6 +61,5 @@ namespace Job_Search_Assistant
         {
 
         }
-        
     }
 }

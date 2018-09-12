@@ -46,5 +46,15 @@ namespace Job_Search_Assistant
 
             return output;
         }
+
+        public void EditStatus(int id)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConnectionString("JobApplications")))
+            {
+                var p = new DynamicParameters();
+                p.Add("@id", id);
+                connection.Execute("dbo.spJobApplications_EditStatus", p, commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }

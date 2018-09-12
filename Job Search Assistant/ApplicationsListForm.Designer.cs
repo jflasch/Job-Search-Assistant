@@ -87,7 +87,6 @@
             this.sortingDropDown.Size = new System.Drawing.Size(174, 29);
             this.sortingDropDown.TabIndex = 11;
             this.sortingDropDown.Text = "Apply Date (Default)";
-            this.sortingDropDown.SelectedIndexChanged += new System.EventHandler(this.sortingDropDown_SelectedIndexChanged);
             // 
             // ApplicationsListForm
             // 

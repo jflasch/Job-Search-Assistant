@@ -15,13 +15,11 @@ namespace Job_Search_Assistant
         {
             if (db == DatabaseType.Sql)
             {
-                // TODO - Set up SQL Connector properly
                 SQLConnector sql = new SQLConnector();
                 Connection = sql;
             }
             else if (db == DatabaseType.TextFile)
             {
-                // TODO - Create text file connection
                 TextConnector text = new TextConnector();
                 Connection = text;
             }

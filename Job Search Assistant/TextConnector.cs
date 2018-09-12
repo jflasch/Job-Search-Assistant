@@ -9,7 +9,6 @@ namespace Job_Search_Assistant
     public class TextConnector : IDataConnection
     {
         private const string JobApplicationsFile = "JobApplications.csv";
-        // TODO - make this method actually save to text files
         public ApplicationModel CreateJobApplication(ApplicationModel model)
         {
             // Load the text file and convert the text to List<ApplicationModel>
@@ -25,6 +24,11 @@ namespace Job_Search_Assistant
             jobApplications.SaveToJobApplicationFile(JobApplicationsFile);
 
             return model;
+        }
+
+        public void EditStatus(int Id)
+        {
+            throw new NotImplementedException();
         }
 
         public List<ApplicationModel> GetApplicationModels_All()

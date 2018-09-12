@@ -11,5 +11,7 @@ namespace Job_Search_Assistant
         ApplicationModel CreateJobApplication(ApplicationModel model);
 
         List<ApplicationModel> GetApplicationModels_All();
+
+        void EditStatus(int Id);
     }
 }

@@ -59,7 +59,6 @@
             this.jobTitleLabel.Size = new System.Drawing.Size(84, 21);
             this.jobTitleLabel.TabIndex = 3;
             this.jobTitleLabel.Text = "<job title>";
-            this.jobTitleLabel.Click += new System.EventHandler(this.middleTextLabel_Click);
             // 
             // notesLabel
             // 
@@ -109,12 +108,13 @@
             // statusLabel
             // 
             this.statusLabel.AutoSize = true;
-            this.statusLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusLabel.Location = new System.Drawing.Point(404, 34);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(73, 21);
+            this.statusLabel.Size = new System.Drawing.Size(77, 21);
             this.statusLabel.TabIndex = 11;
             this.statusLabel.Text = "<status>";
+            this.statusLabel.Click += new System.EventHandler(this.statusLabel_Click);
             // 
             // dateAppliedLabel
             // 
@@ -131,6 +131,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.dateAppliedLabel);
             this.Controls.Add(this.statusLabel);
