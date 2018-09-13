@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddForm));
             this.companyNameText = new System.Windows.Forms.TextBox();
             this.companyNameLabel = new System.Windows.Forms.Label();
             this.jobLocationLabel = new System.Windows.Forms.Label();
@@ -188,6 +189,7 @@
             this.Controls.Add(this.jobLocationText);
             this.Controls.Add(this.companyNameLabel);
             this.Controls.Add(this.companyNameText);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddForm";
             this.Text = "Job Search Assistant";
             this.ResumeLayout(false);

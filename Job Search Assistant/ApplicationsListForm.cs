@@ -67,7 +67,13 @@ namespace Job_Search_Assistant
                 {
                     aLC.notesLabel.Visible = false;
                 }
-                aLC.urlHiddenLabel.Text = model.appPageURL;
+                if (model.appPageURL != "")
+                {
+                    aLC.urlHiddenLabel.Text = model.appPageURL;
+                } else
+                {
+                    aLC.urlLinkLabel.Hide();
+                }
                 applicationsListFlowLayout.Controls.Add(aLC);
             }
         }
@@ -105,5 +111,22 @@ namespace Job_Search_Assistant
             LoadListData();
             PopulateFlowLayout();
         }
+
+        private void searchText_KeyUp(object sender, KeyEventArgs e)
+        {
+            foreach (ApplicationListControl control in applicationsListFlowLayout.Controls)
+            {
+                if (!control.upperTextLabel.Text.Contains(searchText.Text) && !control.jobTitleLabel.Text.Contains(searchText.Text))
+                {
+                    control.Hide();
+                } else
+                {
+                    control.Show();
+                }
+            }
+        }
+
+
+        // TODO - Add a hide closed option
     }
 }

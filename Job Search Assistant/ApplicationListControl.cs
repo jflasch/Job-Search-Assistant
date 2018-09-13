@@ -26,6 +26,7 @@ namespace Job_Search_Assistant
 
         private void urlLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            // If a url exists for this application, open it
             if (urlHiddenLabel.Text != "")
             {
                 System.Diagnostics.Process.Start(urlHiddenLabel.Text);
@@ -36,6 +37,8 @@ namespace Job_Search_Assistant
         {
             LoadListData();
             ApplicationModel currentModel = new ApplicationModel();
+
+            // Find the current model
             foreach (ApplicationModel model in applicationModels)
             {
                 if (model.Id.ToString() == this.Tag.ToString())
@@ -45,6 +48,7 @@ namespace Job_Search_Assistant
                 }
             }
             
+            // Switch the status of the application and update the view of the control
             if (statusLabel.Text == "Open")
             {
                 statusLabel.Text = "Closed";
@@ -68,5 +72,7 @@ namespace Job_Search_Assistant
         {
             applicationModels = GlobalConfig.Connection.GetApplicationModels_All();
         }
+
+        // TODO - Allow the control to be clicked on to bring up an edit screen.
     }
 }

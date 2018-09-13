@@ -16,6 +16,7 @@ namespace Job_Search_Assistant
         public AddForm()
         {
             InitializeComponent();
+            applyDateDateTimePicker.Value = DateTime.Now;
         }
 
         private void addButton_Click(object sender, EventArgs e)
