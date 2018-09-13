@@ -26,8 +26,7 @@ namespace Job_Search_Assistant
 
         private void urlLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //System.Diagnostics.Process.Start(urlHiddenLabel.Text);
-            // TODO - Implement functionality for clicking on the url link
+            System.Diagnostics.Process.Start(urlHiddenLabel.Text);
         }
 
         private void statusLabel_Click(object sender, EventArgs e)

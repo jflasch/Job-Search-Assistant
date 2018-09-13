@@ -23,7 +23,7 @@ namespace Job_Search_Assistant
                 p.Add("@CompanyName", model.companyName);
                 p.Add("@JobTitle", model.jobTitle);
                 p.Add("@JobLocation", model.jobLocation);
-                p.Add("@URL", model.appPageURL);
+                p.Add("@AppPageURL", model.appPageURL);
                 p.Add("@DateApplied", model.dateApplied);
                 p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 

@@ -18,7 +18,20 @@ namespace Job_Search_Assistant
         public ApplicationsListForm()
         {
             InitializeComponent();
+            LoadListData();
+            //LoadTestData();
             PopulateFlowLayout();
+        }
+
+        private void LoadTestData()
+        {
+            applicationModels.Add(new ApplicationModel {
+                companyName = "Foxconn",
+                jobLocation = "Racine, WI",
+                jobTitle = "Software Engineer",
+                status = true, Id = 1,
+                appPageURL = "https:///stackoverflow.com/questions/4833111/insert-value-into-a-string-at-a-certain-position"
+            });
         }
 
         private void LoadListData()
@@ -28,8 +41,7 @@ namespace Job_Search_Assistant
 
         private void PopulateFlowLayout()
         {
-            applicationsListFlowLayout.Controls.Clear();
-            LoadListData();
+            applicationsListFlowLayout.Controls.Clear();           
             sortBy(sortType);
 
             foreach (ApplicationModel model in applicationModels)
@@ -64,6 +76,7 @@ namespace Job_Search_Assistant
         {
             AddForm addForm = new AddForm();
             addForm.ShowDialog();
+            LoadListData();
             PopulateFlowLayout();
         }
 
@@ -89,6 +102,7 @@ namespace Job_Search_Assistant
         private void sortingDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
             sortType = sortingDropDown.Text;
+            LoadListData();
             PopulateFlowLayout();
         }
     }
