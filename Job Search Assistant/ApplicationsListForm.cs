@@ -14,13 +14,14 @@ namespace Job_Search_Assistant
     {
         private List<ApplicationModel> applicationModels = new List<ApplicationModel>();
         private string sortType = "Apply Date (Default)";
+        private List<ApplicationModel> modelsToView = new List<ApplicationModel>();
 
         public ApplicationsListForm()
         {
             InitializeComponent();
             LoadListData();
             //LoadTestData();
-            PopulateFlowLayout();
+            PopulateFlowLayout(applicationModels);
             CalculateStatistics();
         }
 
@@ -46,12 +47,12 @@ namespace Job_Search_Assistant
         /// <summary>
         /// Create an ApplicationListControl for each job application and add them to the flow layout
         /// </summary>
-        private void PopulateFlowLayout()
+        private void PopulateFlowLayout(List<ApplicationModel> modelsToView)
         {
             applicationsListFlowLayout.Controls.Clear();           
             sortBy(sortType);
             
-            foreach (ApplicationModel model in applicationModels)
+            foreach (ApplicationModel model in modelsToView)
             {
                 ApplicationListControl aLC = new ApplicationListControl(model, this);
                 aLC.Tag = model.Id;
@@ -97,7 +98,7 @@ namespace Job_Search_Assistant
             AddForm addForm = new AddForm();
             addForm.ShowDialog();
             LoadListData();
-            PopulateFlowLayout();
+            PopulateFlowLayout(applicationModels);
             CalculateStatistics();
         }
 
@@ -128,13 +129,14 @@ namespace Job_Search_Assistant
         {
             sortType = sortingDropDown.Text;
             LoadListData();
-            PopulateFlowLayout();
+            PopulateFlowLayout(applicationModels);
         }
 
         private void searchText_KeyUp(object sender, KeyEventArgs e)
         {
+            modelsToView.Clear();
             string search = searchText.Text.ToLower();
-            foreach (ApplicationListControl control in applicationsListFlowLayout.Controls)
+            /*foreach (ApplicationListControl control in applicationsListFlowLayout.Controls)
             {
                 // Strings are set to lower case in order to make the search case insensitive
                 string controlText = control.upperTextLabel.Text.ToLower() + control.jobTitleLabel.Text.ToLower();
@@ -145,7 +147,17 @@ namespace Job_Search_Assistant
                 {
                     control.Show();
                 }
-            }            
+            }*/
+
+            foreach (ApplicationModel model in applicationModels)
+            {
+                string modelText = model.companyName.ToLower() + " " + model.jobLocation.ToLower() + " " + model.jobTitle.ToLower();
+                if (modelText.Contains(search))
+                {
+                    modelsToView.Add(model);
+                }
+            }
+            PopulateFlowLayout(modelsToView);
         }
 
         private void hideClosedCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -184,23 +196,5 @@ namespace Job_Search_Assistant
             }
             openApplicationsLabel.Text = "Open Applications: " + openCount;
         }
-
-        /*private int getTotalApplicationCount()
-        {
-            return applicationModels.Count;
-        }
-
-        private int getOpenApplicationCount()
-        {
-            int openCount = 0;
-            foreach (ApplicationModel model in applicationModels)
-            {
-                if (model.status)
-                {
-                    openCount++;
-                }
-            }
-            return openCount;
-        }*/
     }
 }
