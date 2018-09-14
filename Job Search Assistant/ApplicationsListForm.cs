@@ -53,7 +53,7 @@ namespace Job_Search_Assistant
             
             foreach (ApplicationModel model in applicationModels)
             {
-                ApplicationListControl aLC = new ApplicationListControl(model);
+                ApplicationListControl aLC = new ApplicationListControl(model, this);
                 aLC.Tag = model.Id;
                 aLC.upperTextLabel.Text = $"{ model.companyName } | { model.jobLocation }";
                 aLC.jobTitleLabel.Text = model.jobTitle;
@@ -76,7 +76,7 @@ namespace Job_Search_Assistant
                 // Check if there are any notes or not
                 if (model.notes == "" || model.notes == null)
                 {
-                    aLC.notesLabel.Visible = false;
+                    aLC.notesLabel.Hide();
                 }
 
                 // Check if there is an app URL or not

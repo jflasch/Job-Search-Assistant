@@ -12,18 +12,19 @@ namespace Job_Search_Assistant
 {
     public partial class ApplicationListControl : UserControl
     {
-        private List<ApplicationModel> applicationModels = new List<ApplicationModel>();
         private ApplicationModel model;
+        private ApplicationsListForm parentForm;
 
         public ApplicationListControl()
         {
             InitializeComponent();
         }
 
-        public ApplicationListControl(ApplicationModel model)
+        public ApplicationListControl(ApplicationModel model, ApplicationsListForm parentForm)
         {
             InitializeComponent();
             this.model = model;
+            this.parentForm = parentForm;
         }
 
         private void addNoteButton_Click(object sender, EventArgs e)
@@ -60,13 +61,8 @@ namespace Job_Search_Assistant
                 model.status = true;
                 GlobalConfig.Connection.EditStatus(model.Id);
             }
-
-            // TODO - Somehow add functionality so that this action updates the open applications count
+            parentForm.CalculateStatistics();
             
-        }
-        private void LoadListData()
-        {
-            applicationModels = GlobalConfig.Connection.GetApplicationModels_All();
         }
 
         // TODO - Allow the control to be clicked on to bring up an edit screen.
