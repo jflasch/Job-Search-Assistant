@@ -66,7 +66,7 @@ namespace Job_Search_Assistant
                 GlobalConfig.Connection.EditStatus(currentModel.Id);
             }
 
-
+            // TODO - Somehow add functionality so that this action updates the open applications count
         }
         private void LoadListData()
         {

@@ -21,6 +21,7 @@ namespace Job_Search_Assistant
             LoadListData();
             //LoadTestData();
             PopulateFlowLayout();
+            CalculateStatistics();
         }
 
         private void LoadTestData()
@@ -97,6 +98,7 @@ namespace Job_Search_Assistant
             addForm.ShowDialog();
             LoadListData();
             PopulateFlowLayout();
+            CalculateStatistics();
         }
 
         /// <summary>
@@ -143,9 +145,7 @@ namespace Job_Search_Assistant
                 {
                     control.Show();
                 }
-            }
-
-            
+            }            
         }
 
         private void hideClosedCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -167,5 +167,40 @@ namespace Job_Search_Assistant
                 }
             }
         }
+
+        private void CalculateStatistics()
+        {
+            // Get the total number of applications
+            totalApplicationsLabel.Text = totalApplicationsLabel.Text + applicationModels.Count;
+
+            // Get the number of open applications
+            int openCount = 0;
+            foreach (ApplicationModel model in applicationModels)
+            {
+                if (model.status)
+                {
+                    openCount++;
+                }
+            }
+            openApplicationsLabel.Text = openApplicationsLabel.Text + openCount;
+        }
+
+        /*private int getTotalApplicationCount()
+        {
+            return applicationModels.Count;
+        }
+
+        private int getOpenApplicationCount()
+        {
+            int openCount = 0;
+            foreach (ApplicationModel model in applicationModels)
+            {
+                if (model.status)
+                {
+                    openCount++;
+                }
+            }
+            return openCount;
+        }*/
     }
 }

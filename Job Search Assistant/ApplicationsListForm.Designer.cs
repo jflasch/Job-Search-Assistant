@@ -39,6 +39,8 @@
             this.sortByLabel = new System.Windows.Forms.Label();
             this.searchLabel = new System.Windows.Forms.Label();
             this.hideClosedCheckBox = new System.Windows.Forms.CheckBox();
+            this.totalApplicationsLabel = new System.Windows.Forms.Label();
+            this.openApplicationsLabel = new System.Windows.Forms.Label();
             this.searchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchIcon)).BeginInit();
             this.SuspendLayout();
@@ -55,7 +57,7 @@
             // 
             this.headerLabel.AutoSize = true;
             this.headerLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.headerLabel.Location = new System.Drawing.Point(609, 12);
+            this.headerLabel.Location = new System.Drawing.Point(618, 9);
             this.headerLabel.Name = "headerLabel";
             this.headerLabel.Size = new System.Drawing.Size(260, 37);
             this.headerLabel.TabIndex = 8;
@@ -151,11 +153,35 @@
             this.hideClosedCheckBox.UseVisualStyleBackColor = true;
             this.hideClosedCheckBox.CheckedChanged += new System.EventHandler(this.hideClosedCheckBox_CheckedChanged);
             // 
+            // totalApplicationsLabel
+            // 
+            this.totalApplicationsLabel.AutoSize = true;
+            this.totalApplicationsLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalApplicationsLabel.Location = new System.Drawing.Point(12, 15);
+            this.totalApplicationsLabel.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.totalApplicationsLabel.Name = "totalApplicationsLabel";
+            this.totalApplicationsLabel.Size = new System.Drawing.Size(138, 21);
+            this.totalApplicationsLabel.TabIndex = 14;
+            this.totalApplicationsLabel.Text = "Total Applications: ";
+            // 
+            // openApplicationsLabel
+            // 
+            this.openApplicationsLabel.AutoSize = true;
+            this.openApplicationsLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.openApplicationsLabel.Location = new System.Drawing.Point(12, 38);
+            this.openApplicationsLabel.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.openApplicationsLabel.Name = "openApplicationsLabel";
+            this.openApplicationsLabel.Size = new System.Drawing.Size(144, 21);
+            this.openApplicationsLabel.TabIndex = 15;
+            this.openApplicationsLabel.Text = "Open Applications: ";
+            // 
             // ApplicationsListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1534, 933);
+            this.Controls.Add(this.openApplicationsLabel);
+            this.Controls.Add(this.totalApplicationsLabel);
             this.Controls.Add(this.hideClosedCheckBox);
             this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.searchPanel);
@@ -187,5 +213,7 @@
         private System.Windows.Forms.Label sortByLabel;
         private System.Windows.Forms.Label searchLabel;
         private System.Windows.Forms.CheckBox hideClosedCheckBox;
+        private System.Windows.Forms.Label totalApplicationsLabel;
+        private System.Windows.Forms.Label openApplicationsLabel;
     }
 }
