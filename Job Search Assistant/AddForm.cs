@@ -21,7 +21,7 @@ namespace Job_Search_Assistant
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            //string blah = "https:///stackoverflow.com/questions/4833111/insert-value-into-a-string-at-a-certain-position";
+            // If the form is validated, create a new job application and place it in the SQL database
             if (ValidateForm())
             {
                 ApplicationModel jobApplication = new ApplicationModel(
@@ -32,20 +32,17 @@ namespace Job_Search_Assistant
                     true);
                 if (urlLabel.Text != "")
                 {
-                    /*string sub1 = urlText.Text.Substring(0, 5);
-                    if (sub1 == "https")
-                    {
-                        string sub2 = urlText.Text.Substring(6, urlText.Text.Length-6);
-                        urlText.Text = urlText.Text.Substring(0, 6) + "/" + sub2;
-                    }*/
                     jobApplication.appPageURL = urlText.Text;
-
                 }              
                 GlobalConfig.Connection.CreateJobApplication(jobApplication);
                 this.Close();
             }
         }
         
+        /// <summary>
+        /// Check that all mandatory fields are filled in with text
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateForm()
         {
             if (companyNameText.Text == "" || jobLocationText.Text == "" || jobTitleText.Text == "")

@@ -38,6 +38,7 @@
             this.searchIcon = new System.Windows.Forms.PictureBox();
             this.sortByLabel = new System.Windows.Forms.Label();
             this.searchLabel = new System.Windows.Forms.Label();
+            this.hideClosedCheckBox = new System.Windows.Forms.CheckBox();
             this.searchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchIcon)).BeginInit();
             this.SuspendLayout();
@@ -138,11 +139,24 @@
             this.searchLabel.TabIndex = 12;
             this.searchLabel.Text = "Search:";
             // 
+            // hideClosedCheckBox
+            // 
+            this.hideClosedCheckBox.AutoSize = true;
+            this.hideClosedCheckBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hideClosedCheckBox.Location = new System.Drawing.Point(974, 52);
+            this.hideClosedCheckBox.Name = "hideClosedCheckBox";
+            this.hideClosedCheckBox.Size = new System.Drawing.Size(112, 25);
+            this.hideClosedCheckBox.TabIndex = 13;
+            this.hideClosedCheckBox.Text = "Hide Closed";
+            this.hideClosedCheckBox.UseVisualStyleBackColor = true;
+            this.hideClosedCheckBox.CheckedChanged += new System.EventHandler(this.hideClosedCheckBox_CheckedChanged);
+            // 
             // ApplicationsListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1534, 933);
+            this.Controls.Add(this.hideClosedCheckBox);
             this.Controls.Add(this.searchLabel);
             this.Controls.Add(this.searchPanel);
             this.Controls.Add(this.sortingDropDown);
@@ -172,5 +186,6 @@
         private System.Windows.Forms.PictureBox searchIcon;
         private System.Windows.Forms.Label sortByLabel;
         private System.Windows.Forms.Label searchLabel;
+        private System.Windows.Forms.CheckBox hideClosedCheckBox;
     }
 }

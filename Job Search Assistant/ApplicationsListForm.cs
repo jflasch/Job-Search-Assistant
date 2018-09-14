@@ -34,16 +34,22 @@ namespace Job_Search_Assistant
             });
         }
 
+        /// <summary>
+        /// Load all job applications from the database
+        /// </summary>
         private void LoadListData()
         {
             applicationModels = GlobalConfig.Connection.GetApplicationModels_All();
         }
 
+        /// <summary>
+        /// Create an ApplicationListControl for each job application and add them to the flow layout
+        /// </summary>
         private void PopulateFlowLayout()
         {
             applicationsListFlowLayout.Controls.Clear();           
             sortBy(sortType);
-
+            
             foreach (ApplicationModel model in applicationModels)
             {
                 ApplicationListControl aLC = new ApplicationListControl();
@@ -51,6 +57,8 @@ namespace Job_Search_Assistant
                 aLC.upperTextLabel.Text = $"{ model.companyName } | { model.jobLocation }";
                 aLC.jobTitleLabel.Text = model.jobTitle;
                 aLC.dateAppliedLabel.Text = $"Applied on { model.dateApplied.ToShortDateString() }";
+
+                // Check the status of the application
                 if (model.status)
                 {
                     aLC.statusLabel.Text = "Open";
@@ -63,10 +71,14 @@ namespace Job_Search_Assistant
                     aLC.statusLabel.ForeColor = Color.Red;
                     aLC.BackColor = Color.LightSalmon;
                 }
+
+                // Check if there are any notes or not
                 if (model.notes == "" || model.notes == null)
                 {
                     aLC.notesLabel.Visible = false;
                 }
+
+                // Check if there is an app URL or not
                 if (model.appPageURL != "")
                 {
                     aLC.urlHiddenLabel.Text = model.appPageURL;
@@ -74,6 +86,7 @@ namespace Job_Search_Assistant
                 {
                     aLC.urlLinkLabel.Hide();
                 }
+
                 applicationsListFlowLayout.Controls.Add(aLC);
             }
         }
@@ -86,6 +99,10 @@ namespace Job_Search_Assistant
             PopulateFlowLayout();
         }
 
+        /// <summary>
+        /// Sort the list of job applications by the given type
+        /// </summary>
+        /// <param name="sortType">Type by which the applications should be sorted</param>
         private void sortBy(string sortType)
         {
             if (sortType == "Apply Date (Default)")
@@ -114,11 +131,10 @@ namespace Job_Search_Assistant
 
         private void searchText_KeyUp(object sender, KeyEventArgs e)
         {
-            // Search functionality
+            string search = searchText.Text.ToLower();
             foreach (ApplicationListControl control in applicationsListFlowLayout.Controls)
             {
                 // Strings are set to lower case in order to make the search case insensitive
-                string search = searchText.Text.ToLower();
                 string controlText = control.upperTextLabel.Text.ToLower() + control.jobTitleLabel.Text.ToLower();
                 if (!controlText.Contains(search))
                 {
@@ -128,9 +144,28 @@ namespace Job_Search_Assistant
                     control.Show();
                 }
             }
+
+            
         }
 
-
-        // TODO - Add a hide closed option
+        private void hideClosedCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (hideClosedCheckBox.Checked)
+            {
+                foreach (ApplicationListControl control in applicationsListFlowLayout.Controls)
+                {
+                    if (control.statusLabel.Text == "Closed")
+                    {
+                        control.Hide();
+                    }
+                }
+            } else
+            {
+                foreach (ApplicationListControl control in applicationsListFlowLayout.Controls)
+                {
+                    control.Show();
+                }
+            }
+        }
     }
 }
