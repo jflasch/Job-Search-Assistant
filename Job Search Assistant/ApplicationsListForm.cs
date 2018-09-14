@@ -114,9 +114,13 @@ namespace Job_Search_Assistant
 
         private void searchText_KeyUp(object sender, KeyEventArgs e)
         {
+            // Search functionality
             foreach (ApplicationListControl control in applicationsListFlowLayout.Controls)
             {
-                if (!control.upperTextLabel.Text.Contains(searchText.Text) && !control.jobTitleLabel.Text.Contains(searchText.Text))
+                // Strings are set to lower case in order to make the search case insensitive
+                string search = searchText.Text.ToLower();
+                string controlText = control.upperTextLabel.Text.ToLower() + control.jobTitleLabel.Text.ToLower();
+                if (!controlText.Contains(search))
                 {
                     control.Hide();
                 } else
