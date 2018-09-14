@@ -13,10 +13,17 @@ namespace Job_Search_Assistant
     public partial class ApplicationListControl : UserControl
     {
         private List<ApplicationModel> applicationModels = new List<ApplicationModel>();
+        private ApplicationModel model;
 
         public ApplicationListControl()
         {
             InitializeComponent();
+        }
+
+        public ApplicationListControl(ApplicationModel model)
+        {
+            InitializeComponent();
+            this.model = model;
         }
 
         private void addNoteButton_Click(object sender, EventArgs e)
@@ -35,18 +42,6 @@ namespace Job_Search_Assistant
 
         private void statusLabel_Click(object sender, EventArgs e)
         {
-            LoadListData();
-            ApplicationModel currentModel = new ApplicationModel();
-
-            // Find the current model
-            foreach (ApplicationModel model in applicationModels)
-            {
-                if (model.Id.ToString() == this.Tag.ToString())
-                {
-                    currentModel = model;
-                    break;
-                }
-            }
             
             // Switch the status of the application and update the view of the control
             if (statusLabel.Text == "Open")
@@ -55,18 +50,19 @@ namespace Job_Search_Assistant
                 statusLabel.ForeColor = Color.Red;
                 this.BackColor = Color.LightSalmon;
                 // not sure if i even need this line
-                currentModel.status = false;
-                GlobalConfig.Connection.EditStatus(currentModel.Id);
+                model.status = false;
+                GlobalConfig.Connection.EditStatus(model.Id);
             } else
             {
                 statusLabel.Text = "Open";
                 statusLabel.ForeColor = Color.Green;
                 this.BackColor = Color.White;
-                currentModel.status = true;
-                GlobalConfig.Connection.EditStatus(currentModel.Id);
+                model.status = true;
+                GlobalConfig.Connection.EditStatus(model.Id);
             }
 
             // TODO - Somehow add functionality so that this action updates the open applications count
+            
         }
         private void LoadListData()
         {

@@ -53,7 +53,7 @@ namespace Job_Search_Assistant
             
             foreach (ApplicationModel model in applicationModels)
             {
-                ApplicationListControl aLC = new ApplicationListControl();
+                ApplicationListControl aLC = new ApplicationListControl(model);
                 aLC.Tag = model.Id;
                 aLC.upperTextLabel.Text = $"{ model.companyName } | { model.jobLocation }";
                 aLC.jobTitleLabel.Text = model.jobTitle;
@@ -168,10 +168,10 @@ namespace Job_Search_Assistant
             }
         }
 
-        private void CalculateStatistics()
+        public void CalculateStatistics()
         {
             // Get the total number of applications
-            totalApplicationsLabel.Text = totalApplicationsLabel.Text + applicationModels.Count;
+            totalApplicationsLabel.Text = "Total Applications: " + applicationModels.Count;
 
             // Get the number of open applications
             int openCount = 0;
@@ -182,7 +182,7 @@ namespace Job_Search_Assistant
                     openCount++;
                 }
             }
-            openApplicationsLabel.Text = openApplicationsLabel.Text + openCount;
+            openApplicationsLabel.Text = "Open Applications: " + openCount;
         }
 
         /*private int getTotalApplicationCount()
