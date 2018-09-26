@@ -27,11 +27,6 @@ namespace Job_Search_Assistant
             this.parentForm = parentForm;
         }
 
-        private void addNoteButton_Click(object sender, EventArgs e)
-        {
-            // TODO - Implement functionality for adding notes
-        }
-
         private void statusLabel_Click(object sender, EventArgs e)
         {
             
@@ -70,6 +65,10 @@ namespace Job_Search_Assistant
             }
         }
 
-        // TODO - Allow the control to be clicked on to bring up an edit screen.
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            GlobalConfig.Connection.DeleteJobApplication(model.Id);
+            this.Hide();
+        }
     }
 }

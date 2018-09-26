@@ -137,6 +137,7 @@
             this.deleteButton.Size = new System.Drawing.Size(28, 27);
             this.deleteButton.TabIndex = 15;
             this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // urlLinkButton
             // 

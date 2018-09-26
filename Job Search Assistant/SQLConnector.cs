@@ -56,5 +56,15 @@ namespace Job_Search_Assistant
                 connection.Execute("dbo.spJobApplications_EditStatus", p, commandType: CommandType.StoredProcedure);
             }
         }
+
+        public void DeleteJobApplication(int id)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConnectionString("JobApplications")))
+            {
+                var p = new DynamicParameters();
+                p.Add("@id", id);
+                connection.Execute("dbo.spJobApplications_Delete", p, commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }

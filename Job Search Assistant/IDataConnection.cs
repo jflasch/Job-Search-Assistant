@@ -12,6 +12,8 @@ namespace Job_Search_Assistant
 
         List<ApplicationModel> GetApplicationModels_All();
 
-        void EditStatus(int Id);
+        void EditStatus(int id);
+
+        void DeleteJobApplication(int id);
     }
 }

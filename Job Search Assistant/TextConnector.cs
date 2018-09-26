@@ -26,6 +26,11 @@ namespace Job_Search_Assistant
             return model;
         }
 
+        public void DeleteJobApplication(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void EditStatus(int Id)
         {
             throw new NotImplementedException();
