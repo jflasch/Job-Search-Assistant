@@ -15,6 +15,7 @@ namespace Job_Search_Assistant
         private List<ApplicationModel> applicationModels = new List<ApplicationModel>();
         private string sortType = "Apply Date (Default)";
         private List<ApplicationModel> modelsToView = new List<ApplicationModel>();
+        private bool hideChecked = false;
 
         public ApplicationsListForm()
         {
@@ -56,7 +57,8 @@ namespace Job_Search_Assistant
             {
                 ApplicationListControl aLC = new ApplicationListControl(model, this);
                 aLC.Tag = model.Id;
-                aLC.upperTextLabel.Text = $"{ model.companyName } | { model.jobLocation }";
+                aLC.companyNameLabel.Text = model.companyName;
+                aLC.jobLocationLabel.Text = model.jobLocation;
                 aLC.jobTitleLabel.Text = model.jobTitle;
                 aLC.dateAppliedLabel.Text = $"Applied on { model.dateApplied.ToShortDateString() }";
 
@@ -74,19 +76,13 @@ namespace Job_Search_Assistant
                     aLC.BackColor = Color.LightSalmon;
                 }
 
-                // Check if there are any notes or not
-                if (model.notes == "" || model.notes == null)
-                {
-                    aLC.notesLabel.Hide();
-                }
-
                 // Check if there is an app URL or not
                 if (model.appPageURL != "")
                 {
                     aLC.urlHiddenLabel.Text = model.appPageURL;
                 } else
                 {
-                    aLC.urlLinkLabel.Hide();
+                    aLC.urlLinkButton.Hide();
                 }
 
                 applicationsListFlowLayout.Controls.Add(aLC);
@@ -136,23 +132,14 @@ namespace Job_Search_Assistant
         {
             modelsToView.Clear();
             string search = searchText.Text.ToLower();
-            /*foreach (ApplicationListControl control in applicationsListFlowLayout.Controls)
-            {
-                // Strings are set to lower case in order to make the search case insensitive
-                string controlText = control.upperTextLabel.Text.ToLower() + control.jobTitleLabel.Text.ToLower();
-                if (!controlText.Contains(search))
-                {
-                    control.Hide();
-                } else
-                {
-                    control.Show();
-                }
-            }*/
 
             foreach (ApplicationModel model in applicationModels)
             {
                 string modelText = model.companyName.ToLower() + " " + model.jobLocation.ToLower() + " " + model.jobTitle.ToLower();
-                if (modelText.Contains(search))
+                if (modelText.Contains(search) && !hideChecked)
+                {
+                    modelsToView.Add(model);
+                } else if (modelText.Contains(search) && hideChecked && model.status)
                 {
                     modelsToView.Add(model);
                 }
@@ -164,6 +151,7 @@ namespace Job_Search_Assistant
         {
             if (hideClosedCheckBox.Checked)
             {
+                hideChecked = true;
                 foreach (ApplicationListControl control in applicationsListFlowLayout.Controls)
                 {
                     if (control.statusLabel.Text == "Closed")
@@ -173,6 +161,7 @@ namespace Job_Search_Assistant
                 }
             } else
             {
+                hideChecked = false;
                 foreach (ApplicationListControl control in applicationsListFlowLayout.Controls)
                 {
                     control.Show();

@@ -32,15 +32,6 @@ namespace Job_Search_Assistant
             // TODO - Implement functionality for adding notes
         }
 
-        private void urlLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            // If a url exists for this application, open it
-            if (urlHiddenLabel.Text != "")
-            {
-                System.Diagnostics.Process.Start(urlHiddenLabel.Text);
-            }
-        }
-
         private void statusLabel_Click(object sender, EventArgs e)
         {
             
@@ -63,6 +54,20 @@ namespace Job_Search_Assistant
             }
             parentForm.CalculateStatistics();
             
+        }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void urlLinkButton_Click(object sender, EventArgs e)
+        {
+            // If a url exists for this application, open it
+            if (urlHiddenLabel.Text != "")
+            {
+                System.Diagnostics.Process.Start(urlHiddenLabel.Text);
+            }
         }
 
         // TODO - Allow the control to be clicked on to bring up an edit screen.
