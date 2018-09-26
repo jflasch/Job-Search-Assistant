@@ -15,26 +15,16 @@ namespace Job_Search_Assistant
         private List<ApplicationModel> applicationModels = new List<ApplicationModel>();
         private string sortType = "Apply Date (Default)";
         private List<ApplicationModel> modelsToView = new List<ApplicationModel>();
+        private List<ApplicationListControl> applicationListControls = new List<ApplicationListControl>();
         private bool hideChecked = false;
 
         public ApplicationsListForm()
         {
             InitializeComponent();
             LoadListData();
-            //LoadTestData();
-            PopulateFlowLayout(applicationModels);
+            CreateControls();
+            PopulateFlowLayout();
             CalculateStatistics();
-        }
-
-        private void LoadTestData()
-        {
-            applicationModels.Add(new ApplicationModel {
-                companyName = "Foxconn",
-                jobLocation = "Racine, WI",
-                jobTitle = "Software Engineer",
-                status = true, Id = 1,
-                appPageURL = "https:///stackoverflow.com/questions/4833111/insert-value-into-a-string-at-a-certain-position"
-            });
         }
 
         /// <summary>
@@ -46,14 +36,13 @@ namespace Job_Search_Assistant
         }
 
         /// <summary>
-        /// Create an ApplicationListControl for each job application and add them to the flow layout
+        /// Create a list of controls associated to all of the job applications
         /// </summary>
-        private void PopulateFlowLayout(List<ApplicationModel> modelsToView)
+        private void CreateControls()
         {
-            applicationsListFlowLayout.Controls.Clear();           
             sortBy(sortType);
-            
-            foreach (ApplicationModel model in modelsToView)
+
+            foreach (ApplicationModel model in applicationModels)
             {
                 ApplicationListControl aLC = new ApplicationListControl(model, this);
                 aLC.Tag = model.Id;
@@ -80,21 +69,36 @@ namespace Job_Search_Assistant
                 if (model.appPageURL != "")
                 {
                     aLC.urlHiddenLabel.Text = model.appPageURL;
-                } else
+                }
+                else
                 {
                     aLC.urlLinkButton.Hide();
                 }
 
-                applicationsListFlowLayout.Controls.Add(aLC);
+                applicationListControls.Add(aLC);
             }
+        }
+
+        /// <summary>
+        /// Create an ApplicationListControl for each job application and add them to the flow layout
+        /// </summary>
+        private void PopulateFlowLayout()
+        {
+            applicationsListFlowLayout.SuspendLayout();
+            applicationsListFlowLayout.Controls.Clear();
+            applicationsListFlowLayout.Controls.AddRange(applicationListControls.ToArray());
+            applicationsListFlowLayout.ResumeLayout();
         }
 
         private void addNewButton_Click(object sender, EventArgs e)
         {
             AddForm addForm = new AddForm();
             addForm.ShowDialog();
+
+
+
             LoadListData();
-            PopulateFlowLayout(applicationModels);
+            PopulateFlowLayout();
             CalculateStatistics();
         }
 
@@ -125,30 +129,36 @@ namespace Job_Search_Assistant
         {
             sortType = sortingDropDown.Text;
             LoadListData();
-            PopulateFlowLayout(applicationModels);
+            PopulateFlowLayout();
         }
 
         private void searchText_KeyUp(object sender, KeyEventArgs e)
         {
-            modelsToView.Clear();
+            
+            applicationsListFlowLayout.SuspendLayout();
             string search = searchText.Text.ToLower();
 
-            foreach (ApplicationModel model in applicationModels)
+            foreach (ApplicationListControl control in applicationsListFlowLayout.Controls)
             {
-                string modelText = model.companyName.ToLower() + " " + model.jobLocation.ToLower() + " " + model.jobTitle.ToLower();
-                if (modelText.Contains(search) && !hideChecked)
+                string modelText = control.companyNameLabel.Text.ToLower() + " " + control.jobLocationLabel.Text.ToLower() + " " + control.jobTitleLabel.Text.ToLower();
+                if (!modelText.Contains(search))
                 {
-                    modelsToView.Add(model);
-                } else if (modelText.Contains(search) && hideChecked && model.status)
+                    control.Hide();
+                } else if (modelText.Contains(search) && hideChecked && control.statusLabel.Text == "Closed")
                 {
-                    modelsToView.Add(model);
+                    control.Hide();
+                } else
+                {
+                    control.Show();
                 }
+                
             }
-            PopulateFlowLayout(modelsToView);
+            applicationsListFlowLayout.ResumeLayout();
         }
 
         private void hideClosedCheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            applicationsListFlowLayout.SuspendLayout();
             if (hideClosedCheckBox.Checked)
             {
                 hideChecked = true;
@@ -167,6 +177,8 @@ namespace Job_Search_Assistant
                     control.Show();
                 }
             }
+
+            applicationsListFlowLayout.ResumeLayout();
         }
 
         public void CalculateStatistics()
