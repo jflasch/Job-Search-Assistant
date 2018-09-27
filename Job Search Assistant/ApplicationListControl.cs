@@ -12,7 +12,7 @@ namespace Job_Search_Assistant
 {
     public partial class ApplicationListControl : UserControl
     {
-        private ApplicationModel model;
+        public ApplicationModel model;
         private ApplicationsListForm parentForm;
 
         public ApplicationListControl()
@@ -68,7 +68,7 @@ namespace Job_Search_Assistant
         private void deleteButton_Click(object sender, EventArgs e)
         {
             GlobalConfig.Connection.DeleteJobApplication(model.Id);
-            this.Hide();
+            parentForm.RemoveControl(this);
         }
     }
 }

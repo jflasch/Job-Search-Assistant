@@ -13,9 +13,18 @@ namespace Job_Search_Assistant
 {
     public partial class AddForm : Form
     {
+        private ApplicationsListForm parentForm;
+
         public AddForm()
         {
             InitializeComponent();
+            applyDateDateTimePicker.Value = DateTime.Now;
+        }
+
+        public AddForm(ApplicationsListForm parentForm)
+        {
+            InitializeComponent();
+            this.parentForm = parentForm;
             applyDateDateTimePicker.Value = DateTime.Now;
         }
 
@@ -35,7 +44,9 @@ namespace Job_Search_Assistant
                     jobApplication.appPageURL = urlText.Text;
                 }              
                 GlobalConfig.Connection.CreateJobApplication(jobApplication);
+                parentForm.newModel = jobApplication;
                 this.Close();
+                
             }
         }
         
