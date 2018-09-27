@@ -199,5 +199,10 @@ namespace Job_Search_Assistant
             }
             return aLC;
         }
+
+        public void UpdateControl()
+        {
+
+        }
     }
 }

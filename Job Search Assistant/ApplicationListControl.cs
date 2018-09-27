@@ -53,7 +53,23 @@ namespace Job_Search_Assistant
 
         private void editButton_Click(object sender, EventArgs e)
         {
-
+            EditForm editForm = new EditForm(model);
+            editForm.ShowDialog();
+            companyNameLabel.Text = model.companyName;
+            jobLocationLabel.Text = model.jobLocation;
+            jobTitleLabel.Text = model.jobTitle;
+            dateAppliedLabel.Text = $"Applied on { model.dateApplied.ToShortDateString() }";
+            
+            // Check if there is an app URL or not
+            if (model.appPageURL != "")
+            {
+                urlHiddenLabel.Text = model.appPageURL;
+                urlLinkButton.Show();
+            }
+            else
+            {
+                urlLinkButton.Hide();
+            }
         }
 
         private void urlLinkButton_Click(object sender, EventArgs e)

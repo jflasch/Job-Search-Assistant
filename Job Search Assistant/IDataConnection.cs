@@ -15,5 +15,7 @@ namespace Job_Search_Assistant
         void EditStatus(int id);
 
         void DeleteJobApplication(int id);
+
+        void Edit(ApplicationModel model);
     }
 }

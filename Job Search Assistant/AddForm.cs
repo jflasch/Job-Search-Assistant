@@ -45,8 +45,7 @@ namespace Job_Search_Assistant
                 }              
                 GlobalConfig.Connection.CreateJobApplication(jobApplication);
                 parentForm.newModel = jobApplication;
-                this.Close();
-                
+                this.Close();                
             }
         }
         

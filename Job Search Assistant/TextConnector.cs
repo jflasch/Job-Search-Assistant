@@ -31,6 +31,11 @@ namespace Job_Search_Assistant
             throw new NotImplementedException();
         }
 
+        public void Edit(ApplicationModel model)
+        {
+            throw new NotImplementedException();
+        }
+
         public void EditStatus(int Id)
         {
             throw new NotImplementedException();
