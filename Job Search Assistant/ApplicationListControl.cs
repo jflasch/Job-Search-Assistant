@@ -67,8 +67,17 @@ namespace Job_Search_Assistant
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            GlobalConfig.Connection.DeleteJobApplication(model.Id);
-            parentForm.RemoveControl(this);
+            string message = "Are you sure you would like to delete this application?";
+            string caption = "Delete Application";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+            result = MessageBox.Show(message, caption, buttons);
+            if (result == DialogResult.Yes)
+            {
+                GlobalConfig.Connection.DeleteJobApplication(model.Id);
+                parentForm.RemoveControl(this);
+            }
+            
         }
     }
 }
