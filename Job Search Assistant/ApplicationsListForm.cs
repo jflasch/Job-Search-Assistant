@@ -62,20 +62,24 @@ namespace Job_Search_Assistant
         private void addNewButton_Click(object sender, EventArgs e)
         {
             AddForm addForm = new AddForm(this);
+            newModel = null;
             addForm.ShowDialog();
-            ApplicationListControl newControl = CreateNewApplicationListControl(newModel);
-            for (int i = 0; i < applicationListControls.Count; i++)
+            if (newModel != null)
             {
-                ApplicationListControl control = applicationListControls.ElementAt(i);
-                if (newControl.model.dateApplied.CompareTo(control.model.dateApplied) > 0)
+                ApplicationListControl newControl = CreateNewApplicationListControl(newModel);
+                for (int i = 0; i < applicationListControls.Count; i++)
                 {
-                    applicationListControls.Insert(i, newControl);
-                    break;
+                    ApplicationListControl control = applicationListControls.ElementAt(i);
+                    if (newControl.model.dateApplied.CompareTo(control.model.dateApplied) > 0)
+                    {
+                        applicationListControls.Insert(i, newControl);
+                        break;
+                    }
                 }
-            }
-            applicationModels.Add(newModel);
-            PopulateFlowLayout();
-            CalculateStatistics();
+                applicationModels.Add(newModel);
+                PopulateFlowLayout();
+                CalculateStatistics();
+            }            
         }
 
         /// <summary>
